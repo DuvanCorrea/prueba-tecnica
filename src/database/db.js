@@ -3,7 +3,8 @@ const keysDatabase = require("../keys")
 
 // se crea la comunicacion con la base de datos mysql
 const mysqlPool = mysql.createPool({
-    ost: keysDatabase.host,
+    port: keysDatabase.port,
+    host: keysDatabase.host,
     user: keysDatabase.usuarioMysql,
     password: keysDatabase.claveUsuarioMysql,
     database: keysDatabase.nombreDB,

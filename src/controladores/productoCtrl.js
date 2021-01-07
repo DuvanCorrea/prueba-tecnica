@@ -10,18 +10,18 @@ const productoCtrl = {
     getAll: (req, res) => {
         db.getConnection((err, conn) => {
             if (err) {
+                console.log(err)
                 res.send({ respuesta: "error", descripcion: "no se pudo conectar a la base de datos" })
             } else {
                 conn.query(GETALL, (err, rows) => {
                     if (err) {
                         res.send({ respuesta: "error", descripcion: "error al consultar la base de datos" })
                     } else {
-                        console.log(rows)
+                        res.send(rows)
                     }
                 })
             }
         })
-        console.log("get all productos")
     }
 }
 
