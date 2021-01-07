@@ -5,6 +5,7 @@ const app = express()
 // ------------------------
 const productoRutas = require("./rutas/producto.routes")
 const personaRutas = require("./rutas/persona.routes")
+const categoriaRutas = require("./rutas/categoria.routes")
 
 // configuraciones del servidor
 // ----------------------------
@@ -18,6 +19,7 @@ app.use(express.json()) // para convertir texto plano en formato json
 // -------------------------
 app.use("/api", productoRutas)
 app.use("/api", personaRutas)
+app.use("/api", categoriaRutas)
 
 // iniciando servidor
 // ------------------
