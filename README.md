@@ -85,9 +85,31 @@ Petición **PUT** a **/api/persona** -> actualiza la información de una persona
 ```json
 {
     "id_persona": 999,
-    "nombre_completo": "xxxxxx1"
+    "nombre_completo": "xxxxxx"
 }
 ```
 
 ------------
+- ### Ventas
+Para las personas se tienen las siguientes rutas como puntos de acceso:
 
+Petición **POST** a **/api/venta** -> registra la venta consus respectivos productos, validara disponibilidad y existencia de cada uno, solo dejara completar la venta si existen los productos y hay disponibilidad, ademas se pueden enviar la cantidad de productos deseados, el formato a enviar en el body es el siguiente:
+```json
+{
+    "id_persona": 999,
+    "productos": [
+        {
+            "id_producto": 1,
+            "cantidad_vendida": 1
+        },
+        {
+            "id_producto": 2,
+            "cantidad_vendida": 2
+        },
+        {
+            "id_producto": 13,
+            "cantidad_vendida": 3
+        }
+    ]
+}
+```
