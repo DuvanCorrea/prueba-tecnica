@@ -9,8 +9,8 @@ const UPDATE_PRODUCT = "UPDATE PRODUCTOS SET stok=stok-? WHERE (id_producto=?)"
 
 // valiables
 // ---------
-const prodcutosNoEncontrados = []
-const productosSinStok = []
+let prodcutosNoEncontrados = []
+let productosSinStok = []
 let productosAux = []
 let id_personaAux = null
 
@@ -109,9 +109,17 @@ const vantaCtrl = {
     // ------------------------------------------------
     post: (req, res) => {
 
+        // reiniciando variables
+        // ---------------------
+        prodcutosNoEncontrados = []
+        productosSinStok = []
+        productosAux = []
+        id_personaAux = null
+
         // se extrae la información enviada desde front
         // --------------------------------------------
         const { id_persona, productos } = req.body
+        productosAux = []
         productosAux = productos
         id_personaAux = id_persona
 
@@ -125,7 +133,6 @@ const vantaCtrl = {
                 // para evaliar cada uno
                 // ----------------------------------------------------
                 productosAux.forEach((e, i) => {
-                    console.log(">> ", i)
                     validarProducto(res, conn, e, i)
                 });
             }
