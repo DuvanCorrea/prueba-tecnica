@@ -8,9 +8,9 @@ const POST = "INSERT INTO PRODUCTOS (nombre_prodcuto, stok, categorias_id_catego
 const DELETE = "DELETE FROM PRODUCTOS WHERE (id_producto=?)"
 const UPDATE = "UPDATE PRODUCTOS SET nombre_prodcuto=?, stok=?, categorias_id_categoria=? WHERE (id_producto=?)"
 
-// controlador de personas
+// controlador de productos
 // -----------------------
-const categoriaCtrl = {
+const productoCtrl = {
 
     // metodo para traer todas los productos de la base de datos
     // ---------------------------------------------------------
@@ -128,8 +128,8 @@ const categoriaCtrl = {
         })
     },
 
-    // metodo para eliminar las categorias de la base de datos
-    // --------------------------------------------------
+    // metodo para actualizar los productos de la base de datos
+    // --------------------------------------------------------
     put: (req, res) => {
 
         // se extrae la información enviada desde front
@@ -166,4 +166,4 @@ const categoriaCtrl = {
     }
 }
 
-module.exports = categoriaCtrl
+module.exports = productoCtrl

@@ -8,7 +8,7 @@ const POST = "INSERT INTO CATEGORIAS (nombre_categoria) VALUES (?)"
 const DELETE = "DELETE FROM CATEGORIAS WHERE (id_categoria=?)"
 const UPDATE = "UPDATE CATEGORIAS SET nombre_categoria=? WHERE (id_categoria=?)"
 
-// controlador de personas
+// controlador de categorias
 // -----------------------
 const categoriaCtrl = {
 
@@ -91,7 +91,7 @@ const categoriaCtrl = {
     },
 
     // metodo para eliminar las categorias de la base de datos
-    // --------------------------------------------------
+    // -------------------------------------------------------
     delete: (req, res) => {
 
         // se extrae la información enviada desde front
@@ -120,8 +120,8 @@ const categoriaCtrl = {
         })
     },
 
-    // metodo para eliminar las categorias de la base de datos
-    // --------------------------------------------------
+    // metodo para actualizar las categorias de la base de datos
+    // ---------------------------------------------------------
     put: (req, res) => {
 
         // se extrae la información enviada desde front
