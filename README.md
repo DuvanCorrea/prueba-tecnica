@@ -1,4 +1,4 @@
-### Solucion a prueba tecnica
+## Soluciòn a prueba tecnica
 
 La base de datos es MySql
 
