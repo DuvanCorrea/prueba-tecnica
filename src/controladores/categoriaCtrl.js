@@ -6,6 +6,7 @@ const GETALL = "SELECT * FROM CATEGORIAS"
 const GETONE = "SELECT * FROM CATEGORIAS WHERE (id_categoria=?)"
 const POST = "INSERT INTO CATEGORIAS (nombre_categoria) VALUES (?)"
 const DELETE = "DELETE FROM CATEGORIAS WHERE (id_categoria=?)"
+const UPDATE = "UPDATE CATEGORIAS SET nombre_categoria=? WHERE (id_categoria=?)"
 
 // controlador de personas
 // -----------------------
@@ -89,6 +90,8 @@ const categoriaCtrl = {
         })
     },
 
+    // metodo para eliminar las categorias de la base de datos
+    // --------------------------------------------------
     delete: (req, res) => {
 
         // se extrae la información enviada desde front
@@ -107,6 +110,36 @@ const categoriaCtrl = {
                     } else {
                         if (rows.affectedRows > 0) {
                             res.send({ respuesta: "eliminada", descripcion: "la categoria ha sido eliminada" })
+                        } else {
+                            res.status(404)
+                            res.send({ respuesta: "error", descripcion: "la categoria no fue encontrada" })
+                        }
+                    }
+                })
+            }
+        })
+    },
+
+    // metodo para eliminar las categorias de la base de datos
+    // --------------------------------------------------
+    put: (req, res) => {
+
+        // se extrae la información enviada desde front
+        // --------------------------------------------
+        const { id_categoria, nombre_categoria } = req.body
+
+        db.getConnection((err, conn) => {
+            if (err) {
+                res.status(500)
+                res.send({ respuesta: "error", descripcion: "no se pudo conectar a la base de datos" })
+            } else {
+                conn.query(UPDATE, [nombre_categoria, id_categoria], (err, rows) => {
+                    if (err) {
+                        res.status(500)
+                        res.send({ respuesta: "error", descripcion: "error al actualizar informacion en la bd" })
+                    } else {
+                        if (rows.affectedRows > 0) {
+                            res.send({ respuesta: "actualizada", descripcion: "la categoria ha sido actualizada" })
                         } else {
                             res.status(404)
                             res.send({ respuesta: "error", descripcion: "la categoria no fue encontrada" })
