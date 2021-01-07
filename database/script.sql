@@ -55,3 +55,10 @@ CREATE TABLE IF NOT EXISTS productos_has_ventas (
     CONSTRAINT fk_productos_has_ventas_productos1 FOREIGN KEY (productos_id_producto) REFERENCES productos (id_producto) ON DELETE NO ACTION ON UPDATE NO ACTION,
     CONSTRAINT fk_productos_has_ventas_ventas1 FOREIGN KEY (ventas_id_venta) REFERENCES ventas (id_venta) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
+
+ALTER TABLE
+    productos_has_ventas
+ADD
+    cantidad INT NOT NULL
+AFTER
+    ventas_id_venta;
